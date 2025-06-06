@@ -19,6 +19,7 @@ from rest_framework import routers
 from . import views
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from .verify_db import root_view
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -38,6 +39,7 @@ def api_root(request, format=None):
     })
 
 urlpatterns = [
+    path('', root_view, name='root'),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/', api_root, name='api-root'),

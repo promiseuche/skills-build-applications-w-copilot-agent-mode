@@ -1,6 +1,7 @@
 import os
 import sys
 import django
+from django.http import HttpResponse
 
 if __name__ == "__main__":
     # Ensure the backend directory is in the Python path
@@ -19,3 +20,8 @@ if __name__ == "__main__":
     print_collection("Activities", Activity.objects.all())
     print_collection("Leaderboards", Leaderboard.objects.all())
     print_collection("Workouts", Workout.objects.all())
+
+# Add a simple root view for Django
+# In views.py (or here for quick fix)
+def root_view(request):
+    return HttpResponse("Octofit API is running. See /api/ for endpoints.")
